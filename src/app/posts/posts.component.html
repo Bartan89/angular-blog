@@ -1,5 +1,16 @@
-<ul>
-  <li *ngFor="let post of posts">
-    {{ post.title }}
-  </li>
-</ul>
+<div>
+  <label for="">Search</label>
+  <input [(ngModel)]="formInput" type="text">
+</div>
+
+<div>
+  <ul *ngFor="let post of filteredPost">
+    <li>
+      {{ post.title }}
+    </li>
+    <li>
+      {{ post.categories }}
+    </li>
+
+  </ul>
+</div>

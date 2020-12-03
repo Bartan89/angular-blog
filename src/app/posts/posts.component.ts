@@ -13,18 +13,40 @@ import { Post } from '../types';
   styleUrls: ['./posts.component.css']
 })
 export class PostsComponent implements OnInit {
+  private _formInput: string = "seach me"
+
+  get formInput(): string {
+    return this._formInput
+  }
+
+  set formInput(value: string) {
+    this._formInput = value
+
+    if (this._formInput.length >= 1) {
+      const filtered = this.posts.filter((post => {
+        if (post.title.toLowerCase().includes(this.formInput.toLowerCase())) {
+          return true
+        } else {
+          return false
+        }
+      }))
+      this.filteredPost = filtered
+    } else {
+      this.filteredPost = this.posts
+    }
+  }
+
   posts!: Post[]
+  filteredPost!: Post[]
 
   constructor(private FetchService: FetchService) { }
 
   ngOnInit(): void {
 
-    const temp = this.FetchService.getPosts().subscribe(data => {
+    this.FetchService.getPosts().subscribe(data => {
       this.posts = data.items
-      console.log(data.items)
+      this.filteredPost = this.posts
     })
-
-
 
   }
 
