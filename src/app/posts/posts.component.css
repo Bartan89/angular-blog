@@ -1,0 +1,14 @@
+.suggestionList {
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  left: 2.3em;
+
+
+  font-size: 1.2em;
+}
+
+.suggestion {
+  display: "block";
+  cursor: "pointer";
+}

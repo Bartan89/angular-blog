@@ -4,7 +4,6 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { rawDataPost } from './types';
 
-
 @Injectable({
   providedIn: 'root',
 })

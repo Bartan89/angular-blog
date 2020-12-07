@@ -10,9 +10,11 @@ export interface rawDataPost {
   items: Post[]
 }
 
+export type Categories = string[]
+
 export interface Post {
   author: string
-  categories: string[]
+  categories: Categories
   content: string
   description: string
   enclosure: {}

@@ -1,16 +1,30 @@
 <div>
   <label for="">Search</label>
-  <input [(ngModel)]="formInput" type="text">
+  <input [(ngModel)]="formInput" placeholder="Search" type="text">
+  <div class="suggestionList">
+    <div *ngFor="let category of showCategories">
+      <small class="suggestion" *ngIf="showInputSuggestions()" tabIndex="0" (keydown)="handleKey($event, category)">
+        {{ category }}
+      </small>
+    </div>
+  </div>
+
+  <button (click)="initialState()">Show all</button>
+
+  <div *ngIf="youSearchedFor">
+    <h3>results for {{youSearchedFor}}</h3>
+  </div>
+
+
 </div>
+
+<app-loading [truthyPosts]="posts"></app-loading>
 
 <div>
   <ul *ngFor="let post of filteredPost">
     <li>
       {{ post.title }}
     </li>
-    <li>
-      {{ post.categories }}
-    </li>
-
+    <a target="blank" href={{post.link}}>Read article</a>
   </ul>
 </div>
